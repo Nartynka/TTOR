@@ -1,0 +1,42 @@
+[
+	{
+		"file": "D:\\Projects\\TTOR-Martyna\\TTOR\\Source\\TTOR\\TTOR.Build.cs",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Projects\\TTOR-Martyna\\TTOR\\.vscode\\compileCommands_Default\\TTOR.261.rsp"
+		],
+		"directory": "D:\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Projects\\TTOR-Martyna\\TTOR\\Source\\TTOR\\TTOR.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Projects\\TTOR-Martyna\\TTOR\\.vscode\\compileCommands_Default\\TTOR.261.rsp"
+		],
+		"directory": "D:\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Projects\\TTOR-Martyna\\TTOR\\Source\\TTOR\\TTOR.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Projects\\TTOR-Martyna\\TTOR\\.vscode\\compileCommands_Default\\TTOR.261.rsp"
+		],
+		"directory": "D:\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Projects\\TTOR-Martyna\\TTOR\\Source\\TTOR\\TTORGameModeBase.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Projects\\TTOR-Martyna\\TTOR\\.vscode\\compileCommands_Default\\TTOR.261.rsp"
+		],
+		"directory": "D:\\Epic Games\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Projects\\TTOR-Martyna\\TTOR\\Source\\TTOR\\TTORGameModeBase.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Projects\\TTOR-Martyna\\TTOR\\.vscode\\compileCommands_Default\\TTOR.261.rsp"
+		],
+		"directory": "D:\\Epic Games\\UE_5.2\\Engine\\Source"
+	}
+]

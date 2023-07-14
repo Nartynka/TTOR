@@ -20,14 +20,18 @@ void AHubCharacter::BeginPlay()
 	Super::BeginPlay();
 
 	// Get the player controller
-	APlayerController* PlayerController = Cast<APlayerController>(GetController());
-
-	// Get Input Subsystem
-	UEnhancedInputLocalPlayerSubsystem* InputSubsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer());
-
-	if (PlayerController && InputSubsystem)
+	AController* PawnController = GetController();
+	if (PawnController)
 	{
-		InputSubsystem->AddMappingContext(InputContext, 0);
+		APlayerController* PlayerController = Cast<APlayerController>(PawnController);
+
+		// Get Input Subsystem
+		UEnhancedInputLocalPlayerSubsystem* InputSubsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer());
+
+		if (PlayerController && InputSubsystem)
+		{
+			InputSubsystem->AddMappingContext(InputContext, 0);
+		}
 	}
 }
 

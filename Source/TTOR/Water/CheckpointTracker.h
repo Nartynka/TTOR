@@ -12,15 +12,48 @@ class TTOR_API ACheckpointTracker : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	ACheckpointTracker();
 
+	virtual void Tick(float DeltaTime) override;
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	void HandleGameOver();
+	void HandleWin();
+private:
+	UPROPERTY(EditAnywhere, Category = "Checkpoints")
+	UClass* CheckpointClass;
 
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Checkpoints", meta = (AllowPrivateAccess))
+	TArray<class AWaterCheckpoint*> Checkpoints;
+	
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Checkpoints", DisplayName = "Active Checkpoint Index", meta = (AllowPrivateAccess))
+	int32 ActiveCheckpoint = 0;
+
+	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess))
+	FTimerHandle CheckpointTimer;
+
+	/* Functions */
+	UFUNCTION(BlueprintCallable)
+	void GenerateCheckpoints();
+
+	UFUNCTION(BlueprintCallable)
+	void ClearCheckpoints();
+
+	UFUNCTION(BlueprintCallable)
+	void ActivateCheckpoint();
+
+	UFUNCTION(BlueprintCallable)
+	void DeactivateCheckpoint();
+
+	UFUNCTION()
+	void HandleCheckpointReached();
+
+
+	/* Components */
+	UPROPERTY(VisibleAnywhere)
+	USceneComponent* SceneRoot;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess))
+	class USplineComponent* Spline;
 };

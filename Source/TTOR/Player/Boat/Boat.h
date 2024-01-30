@@ -4,7 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+
 #include "Boat.generated.h"
+
+class UInputMappingContext;
+class UInputAction;
+struct FInputActionValue;
 
 UCLASS()
 class TTOR_API ABoat : public APawn
@@ -12,18 +17,65 @@ class TTOR_API ABoat : public APawn
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this pawn's properties
 	ABoat();
+	
+	virtual void Tick(float DeltaTime) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	/* Rotation */
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Rotation")
+	float RotationInput;
+
+	/* Movement */
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Movement")
+	float MoveInput;	 
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Movement")
+	float Motion = 1.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Movement")
+	float ACCELERATION = 7.f;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Movement")
+	float FRICTION = 20.f;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Movement")
+	float MAX_SPEED = 60.f;
+
+	/* Kickback */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Kickback")
+	float KickbackForceMultiplyer = -0.01; // Multiplier
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Kickback")
+	float MAX_KICKBACK_FORCE = 15.f;
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	bool bDoOnce = true;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+private:
+	UPROPERTY(EditDefaultsOnly)
+	class UStaticMeshComponent* StaticMesh;
+
+	/* Input */
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputMappingContext* InputContext;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputAction* LookAction;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputAction* AccelerateAction;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputAction* SteerAction;
+	
+	void Look(const FInputActionValue& ActionValue);
+	void Accelerate(const FInputActionValue& ActionValue);
+	void Steer(const FInputActionValue& ActionValue);
 
 };
